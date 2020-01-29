@@ -4,21 +4,20 @@ import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import List from 'material-ui/List';
+// import List from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
-import Divider from 'material-ui/Divider';
+// import Divider from 'material-ui/Divider';
 import MenuIcon from 'material-ui-icons/Menu';
 
-import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+// import { mailFolderListItems, otherMailFolderListItems } from './tileData';
 
-import GuttersGrid from './GuttersGrid';
+// import GuttersGrid from './GuttersGrid';
 import FullWidthGrid from './FullWidthGrid';
-import InteractiveGrid from './InteractiveGrid';
+// import InteractiveGrid from './InteractiveGrid';
 import SimpleMediaCard from './SimpleMediaCard';
-import ReviewCard from './ReviewCard';
-
+// import ReviewCard from './ReviewCard';
 
 const drawerWidth = 240;
 
@@ -82,7 +81,7 @@ class ResponsiveDrawer extends React.Component {
     const drawer = (
       <div className={classes.List}>
         <div className={classes.drawerHeader} />
-        <Divider />
+        {/* <Divider />
         <List>{mailFolderListItems}</List>
         <Divider />
         <List>{otherMailFolderListItems}</List>
@@ -101,7 +100,7 @@ class ResponsiveDrawer extends React.Component {
         <Divider />
         <List>{mailFolderListItems}</List>
         <Divider />
-        <List>{otherMailFolderListItems}</List>
+        <List>{otherMailFolderListItems}</List> */}
       </div>
     );
 
@@ -119,7 +118,7 @@ class ResponsiveDrawer extends React.Component {
                 <MenuIcon />
               </IconButton>
               <Typography type="title" color="inherit" noWrap>
-                Reactive Material
+                What ails you?
               </Typography>
             </Toolbar>
           </AppBar>
@@ -151,10 +150,10 @@ class ResponsiveDrawer extends React.Component {
           </Hidden>
           <main className={classes.content}>
             <FullWidthGrid />
-            <GuttersGrid />
-            <InteractiveGrid />
+            {/* <GuttersGrid /> */}
+            {/* <InteractiveGrid /> */}
             <SimpleMediaCard />
-            <ReviewCard />
+            {/* <ReviewCard /> */}
           </main>
         </div>
       </div>

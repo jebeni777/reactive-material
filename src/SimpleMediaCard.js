@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import reptile from'./contemplative-reptile.jpg';
+import joints from './joints.jpeg';
 
 const styles = {
   root: {
@@ -26,22 +26,21 @@ function SimpleMediaCard(props) {
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image={reptile}
-          title="Contemplative Reptile"
+          image={joints}
+          title="Enflamed Joints"
         />
         <CardContent>
           <Typography type="headline" component="h2">
-            Lizard
+            Joints
           </Typography>
           <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            As people age, joints seem to be one of the first things noticed because joints start complaining. They begin to feel everything ever done to them. But there are things that could possilby help ease them.
           </Typography>
         </CardContent>
         <CardActions>
-          <Button dense color="primary">
+          {/* <Button dense color="primary">
             Share
-          </Button>
+          </Button> */}
           <Button dense color="primary">
             Learn More
           </Button>
