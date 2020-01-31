@@ -10,7 +10,7 @@ import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import MenuIcon from 'material-ui-icons/Menu';
-import { mailFolderListItems } from './tileData';
+import { navBar } from './navBar';
 import {
   BrowserRouter as Router,
   Switch,
@@ -87,7 +87,11 @@ class ResponsiveDrawer extends React.Component {
     const myStyle = {
       border: "1px Solid Gray",
       listStyleType: "none",
-      boxShadow: "2px 2px grey"
+      boxShadow: "2px 2px grey",
+      marginBottom: "4px",
+      paddingBottom: "4px",
+
+      // align: "left"
     }
     const { classes } = this.props;
 
@@ -96,25 +100,25 @@ class ResponsiveDrawer extends React.Component {
         <div className={classes.drawerHeader} />
         <h3>What ails you?</h3>
         <Divider />
-        <List>{mailFolderListItems}</List>
+        <List>{navBar}</List>
         {/* <Divider />
-        <List>{otherMailFolderListItems}</List>
+        <List>{othernavBar}</List>
         <Divider />
-        <List>{mailFolderListItems}</List>
+        <List>{navBar}</List>
         <Divider />
-        <List>{otherMailFolderListItems}</List>
+        <List>{othernavBar}</List>
         <Divider />
-        <List>{mailFolderListItems}</List>
+        <List>{navBar}</List>
         <Divider />
-        <List>{otherMailFolderListItems}</List>
+        <List>{othernavBar}</List>
         <Divider />
-        <List>{mailFolderListItems}</List>
+        <List>{navBar}</List>
         <Divider />
-        <List>{otherMailFolderListItems}</List>
+        <List>{othernavBar}</List>
         <Divider />
-        <List>{mailFolderListItems}</List>
+        <List>{navBar}</List>
         <Divider />
-        <List>{otherMailFolderListItems}</List> */}
+        <List>{othernavBar}</List> */}
       </div>
     );
 
@@ -170,10 +174,12 @@ class ResponsiveDrawer extends React.Component {
                   style={myStyle}
                 >
                   <Link to={`/${category.id}`} >
-                    <h3>{category.title}</h3>
-                    <img src={category.image} alt={category.imageAltText} />
-                    <h4>Foods/Nutrients that could comfort</h4>
+                    <h2>{category.title}</h2>
+
+                    <img src={category.image} alt={category.imageAltText} style={{ align: "right" }} />
+                    <h4>Helpful foods</h4>
                     {category.foods.join(", ")}
+
                   </Link>
                 </li>)}
               </ul>
