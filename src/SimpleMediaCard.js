@@ -5,6 +5,7 @@ import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import joints from './joints.jpeg';
+// 
 
 const styles = {
   root: {
@@ -34,7 +35,7 @@ function SimpleMediaCard(props) {
             Joints
           </Typography>
           <Typography component="p">
-            As people age, joints seem to be one of the first things noticed because joints start complaining. They begin to feel everything ever done to them. But there are things that could possilby help ease them.
+            As people age, joints seem to be one of the first things noticed because joints start complaining. They begin to feel everything ever done to them. But there are things that could possilby help.
           </Typography>
         </CardContent>
         <CardActions>

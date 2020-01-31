@@ -4,19 +4,26 @@ import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-// import List from 'material-ui/List';
+import List from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
-// import Divider from 'material-ui/Divider';
+import Divider from 'material-ui/Divider';
 import MenuIcon from 'material-ui-icons/Menu';
-
-// import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import { mailFolderListItems } from './tileData';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import AilmentPage from './AilmentPage';
 
 // import GuttersGrid from './GuttersGrid';
 import FullWidthGrid from './FullWidthGrid';
 // import InteractiveGrid from './InteractiveGrid';
-import SimpleMediaCard from './SimpleMediaCard';
+// import SimpleMediaCard from './SimpleMediaCard';
+import categories from './categories';
 // import ReviewCard from './ReviewCard';
 
 const drawerWidth = 240;
@@ -75,15 +82,22 @@ class ResponsiveDrawer extends React.Component {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   };
 
+
   render() {
+    const myStyle = {
+      border: "1px Solid Gray",
+      listStyleType: "none",
+      boxShadow: "2px 2px grey"
+    }
     const { classes } = this.props;
 
     const drawer = (
       <div className={classes.List}>
         <div className={classes.drawerHeader} />
-        {/* <Divider />
-        <List>{mailFolderListItems}</List>
+        <h3>What ails you?</h3>
         <Divider />
+        <List>{mailFolderListItems}</List>
+        {/* <Divider />
         <List>{otherMailFolderListItems}</List>
         <Divider />
         <List>{mailFolderListItems}</List>
@@ -105,58 +119,80 @@ class ResponsiveDrawer extends React.Component {
     );
 
     return (
-      <div className={classes.root}>
-        <div className={classes.appFrame}>
-          <AppBar className={classes.appBar}>
-            <Toolbar>
-              <IconButton
-                color="contrast"
-                aria-label="open drawer"
-                onClick={this.handleDrawerToggle}
-                className={classes.navIconHide}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography type="title" color="inherit" noWrap>
-                What ails you?
+      <Router>
+        <div className={classes.root}>
+          <div className={classes.appFrame}>
+            <AppBar className={classes.appBar}>
+              <Toolbar>
+                <IconButton
+                  color="contrast"
+                  aria-label="open drawer"
+                  onClick={this.handleDrawerToggle}
+                  className={classes.navIconHide}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography type="title" color="inherit" noWrap>
+                  Comfort Food
               </Typography>
-            </Toolbar>
-          </AppBar>
-          <Hidden mdUp>
-            <Drawer
-              type="temporary"
-              open={this.state.mobileOpen}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              onRequestClose={this.handleDrawerToggle}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <Hidden mdDown implementation="css">
-            <Drawer
-              type="permanent"
-              open
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <main className={classes.content}>
-            <FullWidthGrid />
-            {/* <GuttersGrid /> */}
-            {/* <InteractiveGrid /> */}
-            <SimpleMediaCard />
-            {/* <ReviewCard /> */}
-          </main>
+              </Toolbar>
+            </AppBar>
+            <Hidden mdUp>
+              <Drawer
+                type="temporary"
+                open={this.state.mobileOpen}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                onRequestClose={this.handleDrawerToggle}
+                ModalProps={{
+                  keepMounted: true, // Better open performance on mobile.
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <Hidden mdDown implementation="css">
+              <Drawer
+                type="permanent"
+                open
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <main className={classes.content}>
+              <FullWidthGrid />
+              <ul>
+                {categories.map(category => <li
+                  style={myStyle}
+                >
+                  <Link to={`/${category.id}`} >
+                    <h3>{category.title}</h3>
+                    <img src={category.image} alt={category.imageAltText} />
+                    <h4>Foods/Nutrients that could comfort</h4>
+                    {category.foods.join(", ")}
+                  </Link>
+                </li>)}
+              </ul>
+              <Switch>
+                <Route path="/{categoryId}" >
+                  <AilmentPage />
+                </Route>
+                <Route path="/">
+
+                </Route>
+              </Switch>
+              {/* <GuttersGrid /> */}
+              {/* <InteractiveGrid /> */}
+              {/* <SimpleMediaCard /> */}
+              {/* <ReviewCard /> */}
+            </main>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }

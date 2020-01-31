@@ -24,7 +24,7 @@ function FullWidthGrid(props) {
     <div className={classes.root}>
       <Grid container spacing={24}>
         <Grid item xs={12}>
-          <Paper className={classes.paper}>Diet and health go hand in hand. There are specific nutrients that can help aging bodies just by adding certain ingredients to recipes already being used. Choose what ails you below to see a list of nutients and ingredients that may help and recipes to use them in.</Paper>
+          <Paper className={classes.paper}>Diet can benefit health. There are specific foods and nutrients that could help aging bodies. Here are some creative ways to use them in common dishes. Choose an ailment to see how to prepare foods for comfort.</Paper>
         </Grid>
         {/* <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>xs=12 sm=6</Paper>
