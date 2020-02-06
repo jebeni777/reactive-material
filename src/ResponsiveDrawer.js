@@ -11,14 +11,12 @@ import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import MenuIcon from 'material-ui-icons/Menu';
 import { navBar } from './navBar';
-import Routes from "./Routes";
+// import Routes from "./Routes";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
-import AilmentPage from './AilmentPage';
+// import AilmentPage from './AilmentPage';
 
 // import GuttersGrid from './GuttersGrid';
 import FullWidthGrid from './FullWidthGrid';
@@ -90,9 +88,10 @@ class ResponsiveDrawer extends React.Component {
       listStyleType: "none",
       boxShadow: "2px 2px grey",
       marginBottom: "4px",
-      paddingBottom: "4px",
+      padding: "2em",
+      lineHeight: "1.5em",
+      gridTemplateLayout: "repeat(2, auto)"
 
-      // align: "left"
     }
     const { classes } = this.props;
 
@@ -124,76 +123,78 @@ class ResponsiveDrawer extends React.Component {
     );
 
     return (
-      // <Router>
-      <div className={classes.root}>
-        <div className={classes.appFrame}>
-          <AppBar className={classes.appBar}>
-            <Toolbar>
-              <IconButton
-                color="contrast"
-                aria-label="open drawer"
-                onClick={this.handleDrawerToggle}
-                className={classes.navIconHide}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography type="title" color="inherit" noWrap>
-                Comfort Food
+      <Router>
+        <div className={classes.root}>
+          <div className={classes.appFrame}>
+            <AppBar className={classes.appBar}>
+              <Toolbar>
+                <IconButton
+                  color="contrast"
+                  aria-label="open drawer"
+                  onClick={this.handleDrawerToggle}
+                  className={classes.navIconHide}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography type="title" color="inherit" noWrap>
+                  Comfort Food
               </Typography>
-            </Toolbar>
-          </AppBar>
-          <Hidden mdUp>
-            <Drawer
-              type="temporary"
-              open={this.state.mobileOpen}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              onRequestClose={this.handleDrawerToggle}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <Hidden mdDown implementation="css">
-            <Drawer
-              type="permanent"
-              open
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <main className={classes.content}>
-            {/* <FullWidthGrid /> */}
-            {/* <Routes /> */}
-            <ul>
-              {categories.map(category => <li
-                style={myStyle}
+              </Toolbar>
+            </AppBar>
+            <Hidden mdUp>
+              <Drawer
+                type="temporary"
+                open={this.state.mobileOpen}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                onRequestClose={this.handleDrawerToggle}
+                ModalProps={{
+                  keepMounted: true, // Better open performance on mobile.
+                }}
               >
-                <Link to={`/${category.id}`} >
-                  <h2>{category.title}</h2>
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <Hidden mdDown implementation="css">
+              <Drawer
+                type="permanent"
+                open
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <main className={classes.content}>
+              <FullWidthGrid />
+              {/* <Routes /> */}
+              <ul>
+                {categories.map(category => <li
+                  style={myStyle}
+                >
+                  <Link to={`/${category.id}`} >
+                    <h2>{category.title}</h2>
 
-                  <img src={category.image} alt={category.imageAltText} style={{ align: "right" }} />
-                  <h4>Helpful foods</h4>
-                  {category.foods.join(", ")}
+                    <img src={category.image} alt={category.imageAltText} style={{ align: "right" }} />
+                    <h4>Helpful foods</h4>
+                    {category.foods.join(", ")}
 
-                </Link>
-              </li>)}
-            </ul>
+                  </Link>
+                </li>)
 
-            {/* <GuttersGrid /> */}
-            {/* <InteractiveGrid /> */}
-            {/* <SimpleMediaCard /> */}
-            {/* <ReviewCard /> */}
-          </main>
+                }
+              </ul>
+
+              {/* <GuttersGrid /> */}
+              {/* <InteractiveGrid /> */}
+              {/* <SimpleMediaCard /> */}
+              {/* <ReviewCard /> */}
+            </main>
+          </div>
         </div>
-      </div>
-      // </Router>
+      </Router>
     );
   }
 }

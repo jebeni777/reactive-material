@@ -1,12 +1,23 @@
+// import * as React from "react";
+
+// export default (props) =>
+//     (
+//         <div>
+
+
+//             {props.categoryId}
+//             console.log(props.categoryId)
+
+//         </div>
+//     )
+
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import ResposiveDrawer from './ResponsiveDrawer';
 
-export default function AilmentPage(props) {
-    return (
-        <h1>Ailment Page</h1>
-    )
+const AilmentPage = (props) => (
+    <div>
+        {props.categoryId}
+    </div>
+);
 
-};
+export default AilmentPage;
 
